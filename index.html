@@ -1,0 +1,546 @@
+<html>
+
+<head>
+	<!--Let browser know website is optimized for mobile-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+
+	<meta property='og:url' content="" />
+	<meta property='og:image' content="" />
+	<meta property='og:title' content="AusCover Field Database" />
+	<meta property='og:description' content="" />
+	<meta property='og:site_name' content="" />
+
+	<title>Field Portal</title>
+	<LINK REL="SHORTCUT ICON" HREF="">
+
+	<!--Import materialize.css-->
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+<!-- 		<link href="http://materializecss.com/css/ghpages-materialize.css" type="text/css" rel="stylesheet">  -->
+	<link href="assets/vendor/materialize/css/materialize.css" type="text/css" rel="stylesheet">
+		
+		
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/flexboxgrid/6.2.0/flexboxgrid.min.css" type="text/css" />
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css" type="text/css" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+	<link href="assets/vendor/markercluster/MarkerCluster.css" rel="stylesheet">
+	<link href="assets/vendor/markercluster/MarkerCluster.Default.css" rel="stylesheet">
+	<!--  custom css -->
+	<link rel="stylesheet" href="assets/css/field.css">
+
+	<link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+
+	<!-- load map -->
+	<!--     <script>window.onload = function() { load(); }; //this calls the load function in map.js and kicks off geolocation</script> -->
+
+
+
+</head>
+
+<body>
+
+
+
+	<!--***************************************************************************************************************
+LOADING Div
+****************************************************************************************************************-->
+	<!--***************************************************************************************************************
+LOADING Div
+****************************************************************************************************************-->
+
+	<div class="load_modal"></div>
+	<div id="data-modal" class="modal modal-primary fade">
+	</div>
+
+	<!--***************************************************************************************************************
+TOP Toolbar
+****************************************************************************************************************-->
+	<header>
+		<div class="navbar-fixed" style="z-index: 9999; height: 44px; line-height: 44px;">
+			<!-- Dropdown Structure top right corner 3 dot More Button -->
+
+			<ul id="dropdown-more" class="dropdown-content" style="min-width: 200px !important; width: 200px !important; margin-left: 0px; z-index: 99999; overflow: visible;">
+				<li><a id="request-data" class="waves-effect waves-dark">Request Selection</a></li>
+				<li class="divider"></li>
+
+			</ul>
+
+
+			<nav class="adjust-sidenav" role="navigation" style=" height: 44px; line-height: 44px;">
+				<div class="">
+					<div class="nav-wrapper">
+
+						<ul>
+							<li class="left button-collapse hide-on-large-only" data-activates="slide-out">
+								<i class="mdi-navigation-arrow-back hide-on-large-only" style="padding: 0 0 0 10px; height: 44px; line-height: 44px;"></i>
+							</li>
+
+							<li class="left">
+								<a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
+							</li>
+
+							<li class="right ">
+								<a class="dropdown-button waves-effect waves-light" data-activates="dropdown-more">
+															<i class="material-icons" style='height: 44px; line-height: 44px;'>more_vert</i></a>
+							</li>
+
+						</ul>
+
+						<!--***************************************************************************************************************
+                    Data Drawer
+                    ****************************************************************************************************************-->
+
+						<ul id="slide-out" class="side-nav fixed" style="z-index: 9999; overflow-y: hidden;">
+							<ul id="data-slide-out" class="side-nav">
+								<div style="width:100%;height:44px;background-color: #5D6A35;">
+									<li id="data-slide-out-btn" class="left btn z-depth-0 waves-effect waves-block" style="height: 44px; line-height: 44px; background-color: #5D6A35;">
+										<i class="material-icons" style='height: 44px; line-height: 44px;'>arrow_back</i>
+
+									</li>
+								</div>
+								<li class="no-padding">
+									<ul class="collapsible collapsible-accordion" data-collapsible="expandable">
+										<li class="bold">
+											<a class="collapsible-header  waves-effect waves-teal"><i class="material-icons">people</i>Field Data</a>
+											<div class="collapsible-body">
+												<ul>
+													<li>
+														<input id="tls_sites" type="checkbox" class="query">
+														<label for="tls_sites">Ground Lidar</label>
+													</li>
+													<li>
+														<input id="star_transects" type="checkbox" class="query">
+														<label for="star_transects">Star Transects</label>
+													</li>
+													<li>
+														<input id="hemispheric_list" type="checkbox" class="query">
+														<label for="hemispheric_list">Hemispheric Images</label>
+													</li>
+													<li>
+														<input id="tree_structure" type="checkbox" class="query">
+														<label for="tree_structure">Tree Structure</label>
+													</li>
+													<li>
+														<input id="field_photos" type="checkbox" class="query">
+														<label for="field_photos">Field Photos</label>
+													</li>
+												</ul>
+											</div>
+										</li>
+										<li class="bold">
+											<a class="collapsible-header  waves-effect waves-teal"><i class="material-icons">nature</i>Biomass Library</a>
+											<div class="collapsible-body">
+												<ul>
+													<li>
+														<input id="biomass_sites" type="checkbox" class="query">
+														<label for="biomass_sites">Site Level</label>
+													</li>
+													<li>
+														<input id="biomass_trees" type="checkbox" class="query">
+														<label for="biomass_trees">Tree Level</label>
+													</li>
+												</ul>
+											</div>
+										</li>
+										<li class="bold">
+											<a class="collapsible-header  waves-effect waves-teal"><i class="material-icons">flight</i>Airborne Data</a>
+											<div class="collapsible-body">
+												<ul>
+													<li>
+														<input id="calibration_targets" type="checkbox" class="query">
+														<label for="calibration_targets">Calibration</label>
+													</li>
+													<li>
+														<input id="microtops_aod" type="checkbox" class="query">
+														<label for="microtops_aod">Microtops AOD</label>
+													</li>
+													<li>
+														<input id="microtops_ozone" type="checkbox" class="query">
+														<label for="microtops_ozone">Microtops Ozone</label>
+													</li>
+													<li>
+														<input id="hyperspectral" type="checkbox" class="query">
+														<label for="hyperspectral">Airborne Hyperspectral</label>
+													</li>
+													<li>
+														<input id="airborne_lidar" type="checkbox" class="query">
+														<label for="airborne_lidar">Airborne Lidar</label>
+													</li>
+												</ul>
+											</div>
+										</li>
+									</ul>
+								</li>
+							</ul>
+
+							<div class="preview-sidenav" style="height:100%;">
+								<div style="width:100%;height:44px;background-color: #5D6A35;">
+									<li id="data-btn" class="left btn button-collapse z-depth-0 waves-effect waves-block" data-activates="data-slide-out" style="height: 44px; line-height: 44px; background-color: #5D6A35;">
+										<i class="material-icons" style='height: 44px; line-height: 44px;'>arrow_back</i>
+
+									</li>
+								</div>
+
+								<li id="preview-cards" style="padding: 0;">
+									<img id="ternlogo" src="assets/images/logo.png">
+
+								</li>
+
+							</div>
+							<!--end class action-neighbourhood-sidenav div-->
+						</ul>
+
+						<!--***************************************************************************************************************
+                    Neighborhood Drawer End
+                    ****************************************************************************************************************-->
+
+					</div>
+				</div>
+			</nav>
+		</div>
+
+	</header>
+
+	<!--***************************************************************************************************************
+Neighborhood Toolbar End
+****************************************************************************************************************-->
+
+	<!--***************************************************************************************************************
+Map Container
+****************************************************************************************************************-->
+	<main>
+		<div class="row center-xs">
+			<!--***************************************************************************************************************
+        Main body div for content (map)
+        ****************************************************************************************************************-->
+
+			<div class="col-xs sb-map-wide">
+				<div class="map-container">
+					<!-- TODO: if we put height as 100% this won't work on firefox. Have to look at how to calculate height? This adds a dotted line under top nav -->
+					<div id="map">
+
+
+					</div>
+					<!-- Modal Structure -->
+					<div id="daterange" class="modal">
+						<div class="modal-content">
+							<input type="text" class="datepicker">
+						</div>
+						<div class="modal-footer">
+							<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Select</a>
+						</div>
+					</div>
+					<!-- Modal Structure -->
+					<div id="region" class="modal">
+						<div class="modal-content">
+							<form id="request" name="drop_list">
+								<select id="library" class="form-control form-group-margin" onChange="SelectLibrary();">
+						   <option value="select" disabled selected>Select Region Type</option>				
+                        <option value="auscover">AusCover Site</option>
+                        <option value="state">Australian State</option>
+                        
+					</select>
+								<select id="dataset" class="form-control form-group-margin" onchange="submitQuery(document.getElementById('dataset').value,document.getElementById('startDate').value,document.getElementById('endDate').value);">
+				    <option value="select" disabled selected>Select Your Dataset</option>	
+					</select>
+
+							</form>
+						</div>
+						<div class="modal-footer">
+							<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Select</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<script id="download-modal-template" type="text/x-handlebars-template">
+				<div class="mdc-dialog__surface">
+					<header class="mdc-dialog__header">
+						<h2 id="my-mdc-dialog-label" class="mdc-dialog__header__title">
+							Data Available
+						</h2>
+					</header>
+					<section class="mdc-dialog__body">
+						Your data is available at the following URL. It will remain there for download for 48 hours.
+						<p>{{ url }}</p>
+					</section>
+					<footer class="mdc-dialog__footer">
+						<a href="{{ url }}" target="_blank"><button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Open folder</button></a>
+					</footer>
+				</div>
+				<div class="mdc-dialog__backdrop"></div>
+			</script>
+			<script id="tls-template" type="text/x-handlebars-template">
+				<div class="mdc-card">
+					<section class="mdc-card__primary">
+						<div class="demo-card__avatar"><img src="{{ thumbnail }}" width="20" class="rounded"> </div>
+						<h1 class="mdc-card__title">{{ title }}</h1>
+					</section>
+					<section class="mdc-card__media">
+
+						<a href=" {{ potree }} " target="_blank"><button>Fullscreen Potree</button></a>
+					</section>
+					<section class="mdc-card__supporting-text">
+						<p>Site: {{ site }}</p>
+						<p>Date: {{ date }}</p>
+
+					</section>
+				</div>
+			</script>
+			<script id="star-transects-template" type="text/x-handlebars-template">
+				<div class="mdc-card">
+
+					<section class="mdc-card__primary">
+						<h1 class="mdc-card__title mdc-card__title--large">{{ title }}</h1>
+						<h2 class="mdc-card__subtitle"><img src="{{ thumbnail }}" width="20" class="rounded"></h2>
+						<p>Site: {{ site }}</p>
+						<p>Date: {{ date }}</p>
+						<p>Bare Ground: {{ bare }}</p>
+						<p>Green Ground Cover: {{ green }}</p>
+						<p>Non-Green Ground Cover: {{ non-green }}</p>
+						<p>Persistent Green: {{ persist }}</p>
+					</section>
+					<img class="mdc-card__media-item mdc-card__media-item--2x" src="data:image/jpg;base64,{{ nimage }}">
+				</div>
+			</script>
+			<script id="hemispheric-list-template" type="text/x-handlebars-template">
+				<div class="mdc-card">
+					<div class="mdc-card__primary">
+						<img src="{{ thumbnail }}" width="20" class="rounded"> {{ title }}
+					</div>
+					<div class="card-block">
+						<p>Site: {{ site }}</p>
+						<p>Date: {{ date }}</p>
+						<p>Observers: {{ observers }}</p>
+						<p>Camera: {{ camera }}</p>
+						<p>Comment: {{ comment }}</p>
+						<img class="preview-image" src="data:image/jpg;base64,{{ image }}">
+					</div>
+				</div>
+			</script>
+			<script id="lai-template" type="text/x-handlebars-template">
+				<div class="mdc-card">
+					<div class="mdc-card__primary">
+						<img src="{{ thumbnail }}" width="20" class="rounded"> {{ title }}
+					</div>
+					<div class="card-block">
+						<p>Site: {{ site }}</p>
+						<p>Date: {{ date }}</p>
+						<p>Observers: {{ observers }}</p>
+					</div>
+				</div>
+			</script>
+			<script id="tree-structure-template" type="text/x-handlebars-template">
+				<div class="mdc-card">
+					<div class="mdc-card__primary">
+						<img src="{{ thumbnail }}" width="20" class="rounded"> {{ title }}
+					</div>
+					<div class="card-block">
+						<p>Site: {{ site }}</p>
+						<p>Date: {{ date }}</p>
+						<p>Observers: {{ observers }}</p>
+						<p>Number of Trees: {{ no_trees }}</p>
+						<p>Comments: {{ comments }}</p>
+						<img class="preview-image" src="data:image/jpg;base64,{{ image }}">
+					</div>
+				</div>
+			</script>
+			<script id="field-photos-template" type="text/x-handlebars-template">
+				<div class="mdc-card">
+					<div class="mdc-card__primary">
+						<img src="{{ thumbnail }}" width="20" class="rounded"> {{ title }}
+					</div>
+					<div class="card-block">
+						<p>Date: {{ date }}</p>
+						<img class="preview-image" src="data:image/jpg;base64,{{ image }}">
+					</div>
+				</div>
+			</script>
+			<script id="biomass-site-template" type="text/x-handlebars-template">
+				<div class="mdc-card">
+					<div class="mdc-card__primary">
+						<img src="{{ thumbnail }}" width="20" class="rounded"> {{ title }}
+					</div>
+					<div class="card-block">
+						<p>Site: {{ site }}</p>
+						<p>Date: {{ date }}</p>
+						<p>Observers: {{ observers }}</p>
+						<p>Number of Trees: {{ no_trees }}</p>
+						<p>Comments: {{ comments }}</p>
+						<img class="preview-image" src="data:image/jpg;base64,{{ image }}">
+					</div>
+				</div>
+			</script>
+			<script id="biomass-tree-template" type="text/x-handlebars-template">
+				<div class="mdc-card">
+					<div class="mdc-card__primary">
+						<img src="{{ thumbnail }}" width="20" class="rounded"> {{ title }}
+					</div>
+					<div class="card-block">
+						<p>Site: {{ site }}</p>
+						<p>Date: {{ date }}</p>
+						<p>Observers: {{ observers }}</p>
+						<p>Number of Trees: {{ no_trees }}</p>
+						<p>Comments: {{ comments }}</p>
+						<img class="preview-image" src="data:image/jpg;base64,{{ image }}">
+					</div>
+				</div>
+			</script>
+			<script id="calibration-targets-template" type="text/x-handlebars-template">
+				<div class="mdc-card">
+					<div class="mdc-card__primary">
+						<img src="{{ thumbnail }}" width="20" class="rounded"> {{ title }}
+					</div>
+					<div class="card-block">
+						<p>Site: {{ site }}</p>
+						<p>Date: {{ date }}</p>
+						<p>Model: {{ model }}</p>
+					</div>
+				</div>
+			</script>
+			<script id="airborne-lidar-template" type="text/x-handlebars-template">
+				<div class="mdc-card">
+					<div class="mdc-card__primary">
+						<img src="{{ thumbnail }}" width="20" class="rounded"> {{ title }}
+					</div>
+					<div class="card-block">
+						<p>Site: {{ site }}</p>
+						<p>Date: {{ date }}</p>
+					</div>
+				</div>
+			</script>
+			<script id="hyperspectral-template" type="text/x-handlebars-template">
+				<div class="mdc-card">
+					<div class="mdc-card__primary">
+						<img src="{{ thumbnail }}" width="20" class="rounded"> {{ title }}
+					</div>
+					<div class="card-block">
+						<p>Site: {{ site }}</p>
+						<p>Date: {{ date }}</p>
+					</div>
+				</div>
+			</script>
+			<script id="microtops-aod-template" type="text/x-handlebars-template">
+				<div class="mdc-card">
+					<div class="mdc-card__primary">
+						<img src="{{ thumbnail }}" width="20" class="rounded"> {{ title }}
+					</div>
+					<div class="card-block">
+						<p>Site: {{ site }}</p>
+						<p>Date: {{ date }}</p>
+					</div>
+				</div>
+			</script>
+			<script id="microtops-ozone-template" type="text/x-handlebars-template">
+				<div class="mdc-card">
+					<div class="mdc-card__primary">
+						<img src="{{ thumbnail }}" width="20" class="rounded"> {{ title }}
+					</div>
+					<div class="card-block">
+						<p>Site: {{ site }}</p>
+						<p>Date: {{ date }}</p>
+					</div>
+				</div>
+			</script>
+
+			<!--***************************************************************************************************************
+        End of Modal Popup Card Type Containers
+        ****************************************************************************************************************-->
+
+		</div>
+
+	</main>
+
+	<!--***************************************************************************************************************
+End of Map Container
+****************************************************************************************************************-->
+
+	<!--***************************************************************************************************************
+Modal Popup Card Type Containers
+****************************************************************************************************************-->
+
+
+	<div id="filters" class="fixed-action-btn click-to-toggle">
+
+
+		<a class="btn-floating tooltipped btn-large red" data-tooltip="Data Filters" data-position="left">
+    <i class="large material-icons">filter_list</i>
+     </a>
+		<ul>
+
+
+
+			<li>
+				<a class="waves-effect waves-light modal-trigger btn-floating tooltipped red" href="#region" data-tooltip="Select a predefined region" data-position="left"> <i class="material-icons">location_on</i></a>
+
+			</li>
+			<li><a class="waves-effect waves-light modal-trigger btn-floating tooltipped red" href="#daterange" data-tooltip="Select a date range" data-position="left"><i class="material-icons">date_range</i></a>
+
+			</li>
+
+			<li><a class="btn-floating tooltipped red" onclick="new L.Draw.Polygon(map,{shapeOptions: {color: '#ffffff',fillColor: '#ffffff',fillOpacity: 0.5,}}).enable();" data-position="left" data-delay="50" data-tooltip="Draw a region"><i class="material-icons">edit</i></a>
+				<!-- Begin 5th Side Menu Item -->
+				<li><a class="btn-floating tooltipped red" data-tooltip="Clear filters" data-position="left"><i class="material-icons" >close</i></a></li>
+		</ul>
+
+	</div>
+
+	<!--  Scripts-->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script>
+		if (!window.jQuery) {
+			document.write('<script src="bin/jquery-3.2.1.min.js"><\/script>');
+		}
+	</script>
+<!-- 	<script src="assets/vendor/materialize/js/prism.js"></script> -->
+	<script src="assets/vendor/materialize/js/materialize.js"></script>
+	<script src="assets/vendor/materialize/js/init.js"></script>
+
+
+
+	<!-- Scott's custom js for materialize ui functions-->
+	<!-- <script type="text/javascript" src="/material/js/sb-custom.js"></script> -->
+
+	<!-- Page Plugins via CDN -->
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/globalize/0.1.1/globalize.min.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.js"></script>
+
+	<!-- Leaflet -->
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+	<script src="assets/vendor/turf/turf.min.js" charset="utf-8"></script>
+	<script src="assets/vendor/terraformer/terraformer.min.js" charset="utf-8"></script>
+	<script src="assets/vendor/terraformer/terraformer-wkt-parser.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+	<!-- GeoJSON -->
+	<script src="assets/geojson/ibra_bioregions.geojson"></script>
+	<script src="assets/geojson/predefined_geojson.geojson"></script>
+	
+	<!-- Leaflet -->
+	<link rel="stylesheet" href="assets/vendor/leaflet/Leaflet.draw-master/dist/leaflet.draw.css" />
+	<script src="assets/vendor/leaflet/Leaflet.draw-master/dist/leaflet.draw.js"></script>
+
+	<script src="assets/vendor/markercluster/leaflet.markercluster.js"></script>
+	<script src="assets/vendor/handlebars/handlebars.js"></script>
+	<script src="assets/vendor/pickadate.js-3.5.6/lib/picker.js"></script>		
+	<script src="assets/vendor/pickadate.js-3.5.6/lib/picker.date.js"></script>	
+	<script src="assets/js/jsonoptions.js"></script>
+	<script src="assets/js/templates.js"></script>
+	<script src="assets/js/map.js"></script>
+	<script src="assets/js/field.js"></script>
+
+	<script>
+		$('.datepicker').pickadate({
+			selectMonths: true, // Creates a dropdown to control month
+			selectYears: 15, // Creates a dropdown of 15 years to control year,
+			today: 'Today',
+			clear: 'Clear',
+			close: 'Ok',
+			closeOnSelect: false // Close upon selecting a date,
+		});
+	</script>
+</body>
+
+</html>
