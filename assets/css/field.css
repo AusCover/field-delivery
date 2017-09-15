@@ -38,6 +38,13 @@
 	-webkit-font-smoothing: antialiased;
 }
 
+.example-val {
+    font: 400 12px Arial;
+    color: #888;
+    display: block;
+    margin: 15px 0;
+}
+
 nav {
 	color: #fff;
 	background-color: #5D6A35;
