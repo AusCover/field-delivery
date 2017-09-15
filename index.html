@@ -21,7 +21,7 @@
 <!-- 		<link href="http://materializecss.com/css/ghpages-materialize.css" type="text/css" rel="stylesheet">  -->
 	<link href="assets/vendor/materialize/css/materialize.css" type="text/css" rel="stylesheet">
 		
-		
+<!-- vendor css -->
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/flexboxgrid/6.2.0/flexboxgrid.min.css" type="text/css" />
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css" type="text/css" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -29,18 +29,16 @@
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 	<link href="assets/vendor/markercluster/MarkerCluster.css" rel="stylesheet">
 	<link href="assets/vendor/markercluster/MarkerCluster.Default.css" rel="stylesheet">
+	<link href="assets/vendor/noUiSlider/nouislider.css" rel="stylesheet">	
+		
 	<!--  custom css -->
 	<link rel="stylesheet" href="assets/css/field.css">
-
-	<link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+	<link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" /> 
 
 	<!-- load map -->
 	<!--     <script>window.onload = function() { load(); }; //this calls the load function in map.js and kicks off geolocation</script> -->
 
-
-
 </head>
-
 <body>
 
 
@@ -66,14 +64,12 @@ TOP Toolbar
 			<ul id="dropdown-more" class="dropdown-content" style="min-width: 200px !important; width: 200px !important; margin-left: 0px; z-index: 99999; overflow: visible;">
 				<li><a id="request-data" class="waves-effect waves-dark">Request Selection</a></li>
 				<li class="divider"></li>
-
 			</ul>
 
 
 			<nav class="adjust-sidenav" role="navigation" style=" height: 44px; line-height: 44px;">
 				<div class="">
 					<div class="nav-wrapper">
-
 						<ul>
 							<li class="left button-collapse hide-on-large-only" data-activates="slide-out">
 								<i class="mdi-navigation-arrow-back hide-on-large-only" style="padding: 0 0 0 10px; height: 44px; line-height: 44px;"></i>
@@ -85,7 +81,7 @@ TOP Toolbar
 
 							<li class="right ">
 								<a class="dropdown-button waves-effect waves-light" data-activates="dropdown-more">
-															<i class="material-icons" style='height: 44px; line-height: 44px;'>more_vert</i></a>
+							<i class="material-icons" style='height: 44px; line-height: 44px;'>more_vert</i></a>
 							</li>
 
 						</ul>
@@ -99,13 +95,12 @@ TOP Toolbar
 								<div style="width:100%;height:44px;background-color: #5D6A35;">
 									<li id="data-slide-out-btn" class="left btn z-depth-0 waves-effect waves-block" style="height: 44px; line-height: 44px; background-color: #5D6A35;">
 										<i class="material-icons" style='height: 44px; line-height: 44px;'>arrow_back</i>
-
 									</li>
 								</div>
 								<li class="no-padding">
 									<ul class="collapsible collapsible-accordion" data-collapsible="expandable">
 										<li class="bold">
-											<a class="collapsible-header  waves-effect waves-teal"><i class="material-icons">people</i>Field Data</a>
+											<a class="collapsible-header  waves-effect waves-grey"><i class="material-icons">people</i>Field Data</a>
 											<div class="collapsible-body">
 												<ul>
 													<li>
@@ -132,7 +127,7 @@ TOP Toolbar
 											</div>
 										</li>
 										<li class="bold">
-											<a class="collapsible-header  waves-effect waves-teal"><i class="material-icons">nature</i>Biomass Library</a>
+											<a class="collapsible-header  waves-effect waves-grey"><i class="material-icons">nature</i>Biomass Library</a>
 											<div class="collapsible-body">
 												<ul>
 													<li>
@@ -147,7 +142,7 @@ TOP Toolbar
 											</div>
 										</li>
 										<li class="bold">
-											<a class="collapsible-header  waves-effect waves-teal"><i class="material-icons">flight</i>Airborne Data</a>
+											<a class="collapsible-header  waves-effect waves-grey"><i class="material-icons">flight</i>Airborne Data</a>
 											<div class="collapsible-body">
 												<ul>
 													<li>
@@ -227,8 +222,13 @@ Map Container
 					</div>
 					<!-- Modal Structure -->
 					<div id="daterange" class="modal">
+						<h5>
+							Select Date Range
+						</h5>
 						<div class="modal-content">
-							<input type="text" class="datepicker">
+							<div id="test-slider" class="noUi-target noUi-ltr noUi-horizontal"></div>
+							<span class="example-val" id="event-start"></span>
+							<span class="example-val" id="event-end"></span>
 						</div>
 						<div class="modal-footer">
 							<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Select</a>
@@ -237,7 +237,14 @@ Map Container
 					<!-- Modal Structure -->
 					<div id="region" class="modal">
 						<div class="modal-content">
-							<form id="request" name="drop_list">
+							      <div class="collection">
+        <a href="#!" class="collection-item">Alvin</a>
+        <a href="#!" class="collection-item ">Alvin</a>
+        <a href="#!" class="collection-item">Alvin</a>
+        <a href="#!" class="collection-item">Alvin</a>
+      </div>
+            
+<!-- 							<form id="request" name="drop_list">
 								<select id="library" class="form-control form-group-margin" onChange="SelectLibrary();">
 						   <option value="select" disabled selected>Select Region Type</option>				
                         <option value="auscover">AusCover Site</option>
@@ -248,7 +255,7 @@ Map Container
 				    <option value="select" disabled selected>Select Your Dataset</option>	
 					</select>
 
-							</form>
+							</form> -->
 						</div>
 						<div class="modal-footer">
 							<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Select</a>
@@ -292,7 +299,6 @@ Map Container
 			</script>
 			<script id="star-transects-template" type="text/x-handlebars-template">
 				<div class="mdc-card">
-
 					<section class="mdc-card__primary">
 						<h1 class="mdc-card__title mdc-card__title--large">{{ title }}</h1>
 						<h2 class="mdc-card__subtitle"><img src="{{ thumbnail }}" width="20" class="rounded"></h2>
@@ -464,15 +470,10 @@ Modal Popup Card Type Containers
 
 
 	<div id="filters" class="fixed-action-btn click-to-toggle">
-
-
 		<a class="btn-floating tooltipped btn-large red" data-tooltip="Data Filters" data-position="left">
     <i class="large material-icons">filter_list</i>
      </a>
 		<ul>
-
-
-
 			<li>
 				<a class="waves-effect waves-light modal-trigger btn-floating tooltipped red" href="#region" data-tooltip="Select a predefined region" data-position="left"> <i class="material-icons">location_on</i></a>
 
@@ -499,8 +500,6 @@ Modal Popup Card Type Containers
 	<script src="assets/vendor/materialize/js/materialize.js"></script>
 	<script src="assets/vendor/materialize/js/init.js"></script>
 
-
-
 	<!-- Scott's custom js for materialize ui functions-->
 	<!-- <script type="text/javascript" src="/material/js/sb-custom.js"></script> -->
 
@@ -524,23 +523,84 @@ Modal Popup Card Type Containers
 
 	<script src="assets/vendor/markercluster/leaflet.markercluster.js"></script>
 	<script src="assets/vendor/handlebars/handlebars.js"></script>
-	<script src="assets/vendor/pickadate.js-3.5.6/lib/picker.js"></script>		
-	<script src="assets/vendor/pickadate.js-3.5.6/lib/picker.date.js"></script>	
+  <script src="assets/vendor/wNumb/wNumb.js"></script>			
+  <script src="assets/vendor/noUiSlider/nouislider.js"></script>		
+
 	<script src="assets/js/jsonoptions.js"></script>
 	<script src="assets/js/templates.js"></script>
 	<script src="assets/js/map.js"></script>
 	<script src="assets/js/field.js"></script>
 
 	<script>
-		$('.datepicker').pickadate({
-			selectMonths: true, // Creates a dropdown to control month
-			selectYears: 15, // Creates a dropdown of 15 years to control year,
-			today: 'Today',
-			clear: 'Clear',
-			close: 'Ok',
-			closeOnSelect: false // Close upon selecting a date,
-		});
+		
+		// Create a new date from a string, return as a timestamp.
+function timestamp(str){
+    return new Date(str).getTime();   
+}
+	
+var dateSlider = document.getElementById('test-slider');
+
+noUiSlider.create(dateSlider, {
+// Create two timestamps to define a range.
+    range: {
+        min: timestamp('1995'),
+        max: timestamp('2017')
+    },
+
+// Steps of one week
+    step: 30 * 24 * 60 * 60 * 1000,
+	tooltips: false,
+
+// Two more timestamps indicate the handle starting positions.
+    start: [ timestamp('1995'), timestamp('2017') ],
+
+//No decimals
+	format: wNumb({
+		decimals: 0
+	})
+});
+		
+var dateValues = [
+	document.getElementById('event-start'),
+	document.getElementById('event-end')
+];
+
+dateSlider.noUiSlider.on('update', function( values, handle ) {
+	console.log(formatDate(new Date(+values[handle])));
+	dateValues[handle].innerHTML = formatDate(new Date(+values[handle]));
+	console.log(dateValues[handle].innerHTML);
+});
+	
+// Create a string representation of the date.
+function formatDate ( date ) {
+	
+	// Create a list of day and monthnames.
+var months = [
+		"January", "February", "March",
+		"April", "May", "June", "July",
+		"August", "September", "October",
+		"November", "December"
+	];
+
+    return months[date.getMonth()] + " " + date.getFullYear();
+}		
 	</script>
+	<script>
+	  $('.modal').modal({
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      opacity: .5, // Opacity of modal background
+      inDuration: 300, // Transition in duration
+      outDuration: 200, // Transition out duration
+      startingTop: '4%', // Starting top style attribute
+      endingTop: '10%', // Ending top style attribute
+      ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+        alert("Ready");
+        console.log(modal, trigger);
+      },
+      complete: function() { alert('Closed'); } // Callback for Modal close
+    }
+  );
+    </script> 
 </body>
 
 </html>
